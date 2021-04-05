@@ -472,6 +472,22 @@ class Message(models.Model):
         max_length=255
     )
 
+    STATUSES = [
+        ('NEW', 'New, not yet processed'),
+        ('UNREGISTERED', 'Email not registered'),
+        ('REGISTERED', 'Email is registered'),
+        ('NOPDF', 'No PDF statement attached'),
+        ('UNENCRYPTFAILED', 'Could not unencrypt'),
+        ('UNENCRYPTED', 'Unencryption successful'),
+        ('EXTRACTFAILED', 'Extraction failed'),
+        ('EXTRACTED', 'Extraction success')
+    ]
+
+    status = models.CharField(
+        _('Status'),
+        max_length=255, choices=STATUSES, default='NEW'
+    )
+
     message_id = models.CharField(
         _('Message ID'),
         max_length=255
