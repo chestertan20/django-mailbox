@@ -79,6 +79,7 @@ class MessageAdmin(admin.ModelAdmin):
     ]
     list_display = (
         'subject',
+        'status',
         'processed',
         'read',
         'mailbox',
@@ -88,6 +89,7 @@ class MessageAdmin(admin.ModelAdmin):
     ordering = ['-processed']
     list_filter = (
         'mailbox',
+        'status',
         'outgoing',
         'processed',
         'read',
